@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import getUserGeolocation from '../backend/getUserGeolocation.js';
 import { getCityNameFromCoordinates } from '../backend/getCityNameFromCoordinates.js';
 
@@ -10,24 +10,34 @@ async function getTemperature(latitude, longitude) {
   return data.main.temp;
 }
 
-async function displayCoordinates() {
+async function displayCoordinates(setCity, setCountry, setTemperature) {
   try {
     const { latitude, longitude } = await getUserGeolocation();
     const { city, country } = await getCityNameFromCoordinates(latitude, longitude);
-    console.log(`City: ${city}, Country: ${country}`);
+    setCity(city);
+    setCountry(country);
     const temperature = await getTemperature(latitude, longitude);
-    console.log(`Temperature: ${temperature}°C`);
+    setTemperature(temperature);
   } catch (error) {
     console.error(error);
   }
 }
 
 function Main(){
+    const [city, setCity] = useState('');
+    const [country, setCountry] = useState('');
+    const [temperature, setTemperature] = useState('');
+
     useEffect(() => {
-        displayCoordinates();
+        displayCoordinates(setCity, setCountry, setTemperature);
     }, []);
+
     return(
-        <h1>Hello, world!</h1>
+        <div>
+            <h1>Hello, world!</h1>
+            <p>City: {city}, Country: {country}</p>
+            <p>Temperature: {temperature}°C</p>
+        </div>
     );
 }
 

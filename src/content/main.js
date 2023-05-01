@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import getUserGeolocation from '../backend/getUserGeolocation.js';
 import { getCityNameFromCoordinates } from '../backend/getCityNameFromCoordinates.js';
+import 'bootstrap/dist/css/bootstrap.css';
 
 const openWeatherMapApiKey = "290858730fa1a80a3fbfec1f0eb4435d";
 
@@ -25,24 +26,26 @@ async function displayCoordinates(setCity, setCountry, setTemperature, setWeathe
   }
 }
 
-function Main(){
-    const [city, setCity] = useState('');
-    const [country, setCountry] = useState('');
-    const [temperature, setTemperature] = useState('');
-    const [weatherCondition, setWeatherCondition] = useState('');
+function Main() {
+  const [city, setCity] = useState('');
+  const [country, setCountry] = useState('');
+  const [temperature, setTemperature] = useState('');
+  const [weatherCondition, setWeatherCondition] = useState('');
 
-    useEffect(() => {
-        displayCoordinates(setCity, setCountry, setTemperature, setWeatherCondition);
-    }, []);
+  useEffect(() => {
+    displayCoordinates(setCity, setCountry, setTemperature, setWeatherCondition);
+  }, []);
 
-    return(
-        <div>
-            <h1>Hello, world!</h1>
-            <p>City: {city}, Country: {country}</p>
-            <p>Temperature: {temperature}°C</p>
-            <p>Weather Condition: {weatherCondition}</p>
-        </div>
-    );
+  return (
+    <div className="container-fluid d-flex justify-content-center align-items-center">
+      <div className="card p-4">
+        <h1 className="text-center mb-4">Weather App</h1>
+        <p className="text-center mb-1">{city}</p>
+        <p className="text-center mb-0">{weatherCondition}</p>
+        {temperature && <p className="text-center mb-0">{temperature}°C</p>}
+      </div>
+    </div>
+  );
 }
 
 export default Main;

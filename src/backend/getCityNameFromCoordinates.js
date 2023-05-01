@@ -1,7 +1,7 @@
-const apiKey = "bc0f14bb602944eca65098f9105cc648";
+const openCageDataApiKey = "bc0f14bb602944eca65098f9105cc648";
 
 export async function getCityNameFromCoordinates(latitude, longitude) {
-  const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${apiKey}&language=en&pretty=1`;
+  const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${openCageDataApiKey}&language=en&pretty=1`;
 
   try {
     const response = await fetch(url);

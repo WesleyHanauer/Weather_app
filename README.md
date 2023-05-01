@@ -1,3 +1,7 @@
+# Disclaimer
+
+Please note that the APIs used in this project, OpenCageMap (https://opencagedata.com/) and OpenWeatherMap (https://openweathermap.org/), are currently free but subject to change or discontinuation without notice. This could result in the project not functioning as intended. In the event that the APIs stop working, you are free to replace the API key variables in the code.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

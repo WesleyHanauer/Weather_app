@@ -1,8 +1,8 @@
-import getTemperature from "./getTemperature";
+import getTemperature from "./getTemperatureAndWeatherCondition";
 import getUserGeolocation from "./getUserGeolocation";
 import { getCityNameFromCoordinates } from "./getCityNameFromCoordinates";
 
-async function displayCoordinates(setCity, setTemperature, setWeatherCondition) {
+async function fetchWeatherInformation(setCity, setTemperature, setWeatherCondition) {
     try {
         const { latitude, longitude } = await getUserGeolocation();
         const { city } = await getCityNameFromCoordinates(latitude, longitude);
@@ -20,4 +20,4 @@ async function displayCoordinates(setCity, setTemperature, setWeatherCondition) 
     }
 }
 
-export default displayCoordinates;
+export default fetchWeatherInformation;

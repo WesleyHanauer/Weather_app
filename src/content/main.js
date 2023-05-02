@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import displayCoordinates from "../backend/displayCoordinates.js";
+import displayCoordinates from "../backend/fetchWeatherInformation.js";
 
 function Main() {
   const [city, setCity] = useState('');

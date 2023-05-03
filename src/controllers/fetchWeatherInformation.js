@@ -1,6 +1,6 @@
-import getTemperature from "./getTemperatureAndWeatherCondition";
+import getTemperature from "../models/getTemperatureAndWeatherCondition";
 import getUserGeolocation from "./getUserGeolocation";
-import { getCityNameFromCoordinates } from "./getCityNameFromCoordinates";
+import { getCityNameFromCoordinates } from "../models/getCityNameFromCoordinates";
 
 async function fetchWeatherInformation(setCity, setTemperature, setWeatherCondition) {
     try {

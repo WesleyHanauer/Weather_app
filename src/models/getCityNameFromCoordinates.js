@@ -1,14 +1,21 @@
 const openCageDataApiKey = "bc0f14bb602944eca65098f9105cc648";
 
-export async function getCityNameFromCoordinates(latitude, longitude) {
+async function fetchGeocodeData(latitude, longitude) {
   const url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${openCageDataApiKey}&language=en&pretty=1`;
+  const response = await fetch(url);
+  return response.json();
+}
 
+function extractCityFromGeocodeData(geocodeData) {
+  const city = geocodeData.results[0].components.city_district;
+  return { city };
+}
+
+export async function getCityNameFromCoordinates(latitude, longitude) {
   try {
-    const response = await fetch(url);
-    const data = await response.json();
-    const city = data.results[0].components.city_district;
-    const country = data.results[0].components.country_code;
-    return { city, country };
+    const geocodeData = await fetchGeocodeData(latitude, longitude);
+    const { city } = extractCityFromGeocodeData(geocodeData);
+    return { city };
   } catch (error) {
     console.error(error);
     return null;

@@ -12,13 +12,12 @@ function Content() {
   }, []);
 
   return (
-    <div className="container-fluid d-flex justify-content-center align-items-center">
-      <div className="card p-4">
-        <h1 className="text-center mb-4">Weather App</h1>
-        <p className="text-center mb-1">{city}</p>
-        <p className="text-center mb-0">{weatherCondition}</p>
-        {temperature && <p className="text-center mb-0">{temperature}°C</p>}
-      </div>
+    <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundColor: '#87CEEB' }}>
+      {temperature && (<div className="card p-4" style={{ fontFamily: "'Oswald', sans-serif", fontSize: '2rem'}}>
+      <p className="text-center mb-1">{city}</p>
+      <p className="text-center mb-0">{weatherCondition}</p>
+      <p className="text-center mb-0">{temperature}°C</p>
+      </div>)}
     </div>
   );
 }
